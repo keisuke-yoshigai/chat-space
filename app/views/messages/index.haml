@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %meta{charset: "utf-8"}
+    %link{rel: "stylesheet", href: "application.scss"}
+  %body
+    %div.notice チャットグループが作成されました。
+    %div.side
+      %div.side__menu
+        %div.side__menu__user-name seo
+        %div.side__menu__right-content
+          %a{class: "side_menu__right-content__new-group", href: "#"}
+            %i.fa.fa-pencil-square-o.side_menu__right-content__new-group__icon
+          %a{class: "side__menu__right-content__edit-account", href: "#"}
+            %i.fa.fa-cog.side__menu__right-content__edit-account__icon
+      %div.side__groups
+        %div.side__groups__group
+          %div.side__groups__group__name sample
+          %div.side__groups__group__message Good bye world!
+
+    %div.main
+      %header.main__header
+        %div.main__header__left-content
+          %div.main__header__left-content__group-name sampleグループ
+          %div.main__header__left-content__group-members Members: seo neko
+
+        %a{class: "main__header__group-edit--frame-blue", href: "#"}Edit
+      %div.main__chat
+        %div.main__chat__message
+          %div.main__chat__message__user-name seo
+          %div.main__chat__message__send-time 2016/09/21 06:16:55
+          %p.main__chat__message__text Hello world!
+        %div.main__chat__message
+          %div.main__chat__message__user-name neko
+          %div.main__chat__message__send-time 2016/09/22 06:16:55
+          %div.main__chat__message__text Good bye world!
+
+      %footer.main__footer
+        %div.main__footer__message-form
+          %input{class: "main__footer__message-form__text", type: "text", placeholder: "type a message", name: ""}
+          %input{class: "main__footer__message-form__submit--back-blue", type: "submit", value: "Send"}
+          %i.fa.fa-picture-o
