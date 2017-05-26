@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(strong_parameter)
+    user = User.find(params[:id])
+    if user.id == current_user.id
+      user.update(strong_parameter)
+    end
     redirect_to controller: :messages, action: :index
   end
 
