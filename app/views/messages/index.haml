@@ -23,8 +23,8 @@
         %div.main__header__left-content
           %div.main__header__left-content__group-name sampleグループ
           %div.main__header__left-content__group-members Members: seo neko
+        = link_to "Edit", edit_user_path(current_user.id), class: "main__header__group-edit--frame-blue"
 
-        %a{class: "main__header__group-edit--frame-blue", href: "#"}Edit
       %div.main__chat
         %div.main__chat__message
           %div.main__chat__message__user-name seo
