@@ -4,14 +4,13 @@
     %meta{charset: "utf-8"}
     %link{rel: "stylesheet", href: "application.scss"}
   %body
-    %div.notice チャットグループが作成されました。
     %div.side
       %div.side__menu
         %div.side__menu__user-name seo
         %div.side__menu__right-content
           %a{class: "side_menu__right-content__new-group", href: "#"}
             %i.fa.fa-pencil-square-o.side_menu__right-content__new-group__icon
-          %a{class: "side__menu__right-content__edit-account", href: "#"}
+          %a{class: "edit_user_path(current_user.id)side__menu__right-content__edit-account", href: "#{edit_user_path(current_user.id)}"}
             %i.fa.fa-cog.side__menu__right-content__edit-account__icon
       %div.side__groups
         %div.side__groups__group
@@ -23,8 +22,8 @@
         %div.main__header__left-content
           %div.main__header__left-content__group-name sampleグループ
           %div.main__header__left-content__group-members Members: seo neko
+        = link_to "Edit",  "", class: "main__header__group-edit--frame-blue"
 
-        %a{class: "main__header__group-edit--frame-blue", href: "#"}Edit
       %div.main__chat
         %div.main__chat__message
           %div.main__chat__message__user-name seo

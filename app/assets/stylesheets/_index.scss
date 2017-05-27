@@ -12,14 +12,6 @@ $side-width: 300px;
   }
 }
 
-.notice {
-  height: 30px;
-  background-color: $blue;
-  width: 100%;
-  text-align: center;
-  color: $white;
-}
-
 html {
   height: 100%;
   width: 100%;
@@ -29,7 +21,6 @@ html {
     width: 100%;
     .side {
       height: 100%;
-      // height: calc(100% - 30px);
       width: 300px;
       background-color: #2f3e51;
       float: left;
