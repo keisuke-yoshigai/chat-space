@@ -1,0 +1,22 @@
+= form_for group, html: {"accept-charset" => "UTF-8", class: "edit_chat_group", class: "new_chat_group", id: "edit_chat_group_22"} do |f|
+  .chat-group-form__errors
+    %h2
+      - if group.errors.any?
+        #{group.errors.count}件のエラーが発生しました。
+        %ul
+        - group.errors.full_messages.each do |msg|
+          %li #{msg}
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label "グループ名", class: "chat-group-form__label"
+    .chat-group-form__field--right
+      = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__input", id: "chat_group_name", value: group.name
+
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label "チャットメンバー", class: "chat-group-form__label"
+
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "Save", class: "chat-group-form__action-btn"
