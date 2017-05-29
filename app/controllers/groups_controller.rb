@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    render "new"
   end
 
   def create
@@ -18,7 +17,6 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    render "edit"
   end
 
   def update
