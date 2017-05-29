@@ -1,29 +1,53 @@
+$white: #fff;
+$red: #f05050;
+$blue: #38aef0;
+
+@mixin box_style() {
+  box-sizing: border-box;
+}
+
+@mixin text_center() {
+  text-align: center;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+@mixin border_line(){
+  border: 1px solid #ddd;
+}
+
 .chat-group-form {
   width: 980px;
   margin: 60px auto;
   padding: 40px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: $white;
   border-radius: 5px;
-  box-sizing: border-box;
+  @include box_style();
+  @include border_line();
 
   h1 {
     letter-spacing: 2px;
     font-size: 24px;
     font-weight: bold;
-    text-align: center;
+    @include text_center();
   }
 
   &__errors {
     margin: 30px 0;
     padding: 20px 40px;
-    border: 1px solid #ddd;
     border-radius: 2px;
-    text-align: center;
+    @include text_center();
+    @include border_line();
 
     h2 {
       margin-bottom: 10px;
-      color: #f05050;
+      color: $red;
       font-size: 14px;
     }
 
@@ -43,18 +67,14 @@
   &__field {
     width: 100%;
     margin-top: 30px;
-    &:after {
-      content: "";
-      clear: both;
-      display: block;
-    }
+    @include clearfix();
 
     &--left {
       float: left;
       width: 30%;
       padding-right: 20px;
       padding-left: 20px;
-      box-sizing: border-box;
+      @include box_style();
     }
 
     &--right {
@@ -74,7 +94,7 @@
       width: 100%;
       line-height: 30px;
       padding: 10px 15px;
-      box-sizing: border-box;
+      @include box_style();
     }
   }
 
@@ -83,11 +103,7 @@
     line-height: 50px;
     font-size: 14px;
     border-bottom: 1px solid #ddd;
-    &:after {
-      content: "";
-      clear: both;
-      display: block;
-    }
+    @include clearfix();
 
     &__name {
       float: left;
@@ -99,11 +115,11 @@
       cursor: pointer;
 
       &--add {
-        color: #38aef0;
+        color: $blue;
       }
 
       &--remove {
-        color: #f05050;
+        color: $red
       }
     }
   }
@@ -111,8 +127,8 @@
   &__action-btn {
     display: inline-block;
     padding: 12px 20px;
-    color: #fff;
-    background-color: #38aef0;
+    color: $white;
+    background-color: $blue;
     border: 0;
   }
 }
