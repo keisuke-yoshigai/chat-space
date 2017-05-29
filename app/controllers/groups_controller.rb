@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    render "new_edit"
+    render "new"
   end
 
   def create
@@ -13,12 +13,12 @@ class GroupsController < ApplicationController
       redirect_to controller: :messages, action: :index
     else
       flash[:alert] = "グループを作成できませんでした"
-      render "new_edit"
+      render "new"
     end
   end
 
   def edit
-    render "new_edit"
+    render "edit"
   end
 
   def update

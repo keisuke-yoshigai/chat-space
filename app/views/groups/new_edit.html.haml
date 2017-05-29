@@ -1,8 +1,0 @@
-- if @group.name
-  .chat-group-form
-    = content_tag(:h1, "チャットグループ編集")
-    = render partial: "form", locals: {group: @group}
-- else
-  .chat-group-form
-    = content_tag(:h1, "新規チャットグループ")
-    = render partial: "form", locals: {group: @group}
