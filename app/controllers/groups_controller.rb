@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
       redirect_to group_messages_path(params[:id])
     else
       flash[:alert] = "グループを編集できませんでした"
-      redirect_to action: :edit
+      render "edit"
     end
   end
 
