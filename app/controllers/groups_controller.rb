@@ -3,26 +3,32 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    render "new_edit"
   end
 
   def create
     @group = Group.create(strong_parameter)
     if @group.save
+      flash[:notice] = "グループを作成しました"
       redirect_to controller: :messages, action: :index
     else
-      render "new"
+      flash[:alert] = "グループを作成できませんでした"
+      render "new_edit"
     end
   end
 
   def edit
+    render "new_edit"
   end
 
   def update
     @group.update(strong_parameter)
     if @group.save
+      flash[:notice] = "グループを編集しました"
       redirect_to group_messages_path(params[:id])
     else
-      render "edit"
+      flash[:alert] = "グループを編集できませんでした"
+      redirect_to action: :edit
     end
   end
 
