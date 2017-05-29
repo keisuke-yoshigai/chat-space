@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(strong_parameter)
+    @group = Group.new(strong_parameter)
     if @group.save
       flash[:notice] = "グループを作成しました"
       redirect_to controller: :messages, action: :index
@@ -22,8 +22,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group.update(strong_parameter)
-    if @group.save
+    if @group.update(strong_parameter)
       flash[:notice] = "グループを編集しました"
       redirect_to group_messages_path(params[:id])
     else
