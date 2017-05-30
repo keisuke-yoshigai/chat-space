@@ -1,0 +1,113 @@
+@import "./variable";
+@import "./mixin";
+
+.chat-group-form {
+  width: 980px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: $white;
+  border-radius: 5px;
+  @include box_style();
+  @include border_line();
+
+  h1 {
+    letter-spacing: 2px;
+    font-size: 24px;
+    font-weight: bold;
+    @include text_center();
+  }
+
+  &__errors {
+    margin: 30px 0;
+    padding: 20px 40px;
+    border-radius: 2px;
+    @include text_center();
+    @include border_line();
+
+    h2 {
+      margin-bottom: 10px;
+      color: $red;
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    margin-top: 30px;
+    @include clearfix();
+
+    &--left {
+      float: left;
+      width: 30%;
+      padding-right: 20px;
+      padding-left: 20px;
+      @include box_style();
+    }
+
+    &--right {
+      float: right;
+      width: 70%;
+    }
+
+    .chat-group-form__label {
+      display: block;
+      line-height: 50px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .chat-group-form__input {
+      float: left;
+      width: 100%;
+      line-height: 30px;
+      padding: 10px 15px;
+      @include box_style();
+    }
+  }
+
+  .chat-group-user {
+    padding: 0 15px;
+    line-height: 50px;
+    font-size: 14px;
+    border-bottom: 1px solid $gray;
+    @include clearfix();
+
+    &__name {
+      float: left;
+    }
+
+    &__btn {
+      float: right;
+      display: inline-block;
+      cursor: pointer;
+
+      &--add {
+        color: $blue;
+      }
+
+      &--remove {
+        color: $red
+      }
+    }
+  }
+
+  &__action-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    color: $white;
+    background-color: $blue;
+    border: 0;
+  }
+}
