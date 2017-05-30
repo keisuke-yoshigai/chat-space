@@ -1,26 +1,5 @@
-$white: #fff;
-$red: #f05050;
-$blue: #38aef0;
-
-@mixin box_style() {
-  box-sizing: border-box;
-}
-
-@mixin text_center() {
-  text-align: center;
-}
-
-@mixin clearfix {
-  &:after {
-    content: "";
-    clear: both;
-    display: block;
-  }
-}
-
-@mixin border_line(){
-  border: 1px solid #ddd;
-}
+@import "./variable";
+@import "./mixin";
 
 .chat-group-form {
   width: 980px;
@@ -102,7 +81,7 @@ $blue: #38aef0;
     padding: 0 15px;
     line-height: 50px;
     font-size: 14px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $gray;
     @include clearfix();
 
     &__name {

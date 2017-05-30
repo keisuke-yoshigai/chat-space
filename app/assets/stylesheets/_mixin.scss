@@ -1,0 +1,19 @@
+@mixin box_style() {
+  box-sizing: border-box;
+}
+
+@mixin text_center() {
+  text-align: center;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+@mixin border_line(){
+  border: 1px solid $gray;
+}
