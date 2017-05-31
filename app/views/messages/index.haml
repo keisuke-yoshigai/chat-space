@@ -14,11 +14,7 @@
           %a{class: "edit_user_path(current_user.id)side__menu__right-content__edit-account", href: "#{edit_user_path(current_user.id)}"}
             %i.fa.fa-cog.side__menu__right-content__edit-account__icon
       %div.side__groups
-        - current_user.groups.each do|group|
-          %div.side__groups__group
-            %div.side__groups__group__name
-              = group.name
-            %div.side__groups__group__message まだメッセージはありません。
+        = render partial: "groups/groups", locals: {groups: current_user.groups}
 
     %div.main
       %header.main__header
