@@ -14,6 +14,8 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'pry-rails'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'byebug'
