@@ -6,16 +6,15 @@
   %body
     %div.side
       %div.side__menu
-        %div.side__menu__user-name seo
+        %div.side__menu__user-name
+          = current_user.name
         %div.side__menu__right-content
           %a{class: "side_menu__right-content__new-group", href: new_group_path}
             %i.fa.fa-pencil-square-o.side_menu__right-content__new-group__icon
           %a{class: "edit_user_path(current_user.id)side__menu__right-content__edit-account", href: "#{edit_user_path(current_user.id)}"}
             %i.fa.fa-cog.side__menu__right-content__edit-account__icon
       %div.side__groups
-        %div.side__groups__group
-          %div.side__groups__group__name sample
-          %div.side__groups__group__message Good bye world!
+        = render partial: "groups/groups", locals: {groups: current_user.groups}
 
     %div.main
       %header.main__header

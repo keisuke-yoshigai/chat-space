@@ -23,6 +23,7 @@
     border-radius: 2px;
     @include text_center();
     @include border_line();
+    border-style: none;
 
     h2 {
       margin-bottom: 10px;
