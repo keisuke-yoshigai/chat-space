@@ -21,7 +21,8 @@
         %div.main__header__left-content
           %div.main__header__left-content__group-name sampleグループ
           %div.main__header__left-content__group-members Members: seo neko
-        = link_to "Edit", edit_group_path(@group) , class: "main__header__group-edit--frame-blue"
+        / = link_to "Edit", edit_group_path(@group) , class: "main__header__group-edit--frame-blue"
+        = link_to "Edit", edit_group_path(1) , class: "main__header__group-edit--frame-blue"
 
       %div.main__chat
         %div.main__chat__message
@@ -35,6 +36,8 @@
 
       %footer.main__footer
         %div.main__footer__message-form
-          %input{class: "main__footer__message-form__text", type: "text", placeholder: "type a message", name: ""}
-          %input{class: "main__footer__message-form__submit--back-blue", type: "submit", value: "Send"}
-          %i.fa.fa-picture-o
+          = form_for [@group, @message] do |f|
+            =f.text_field :body, class: "main__footer__message-form__text", placeholder: "type a message"
+            = f.label :image, { class: "fa fa-picture-o" } do
+              = f.file_field :image, style: "display: none"
+            =f.submit "Send", class: "main__footer__message-form__submit--back-blue"
