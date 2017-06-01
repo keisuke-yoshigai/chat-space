@@ -4,37 +4,41 @@
     %meta{charset: "utf-8"}
     %link{rel: "stylesheet", href: "application.scss"}
   %body
-    %div.side
-      %div.side__menu
-        %div.side__menu__user-name
+    .side
+      .side__menu
+        .side__menu__user-name
           = current_user.name
-        %div.side__menu__right-content
+        .side__menu__right-content
           %a{class: "side_menu__right-content__new-group", href: new_group_path}
             %i.fa.fa-pencil-square-o.side_menu__right-content__new-group__icon
           %a{class: "edit_user_path(current_user.id)side__menu__right-content__edit-account", href: "#{edit_user_path(current_user.id)}"}
             %i.fa.fa-cog.side__menu__right-content__edit-account__icon
-      %div.side__groups
+      .side__groups
         = render partial: "groups/groups", locals: {groups: current_user.groups}
 
-    %div.main
+    .main
       %header.main__header
-        %div.main__header__left-content
-          %div.main__header__left-content__group-name sampleグループ
-          %div.main__header__left-content__group-members Members: seo neko
+        .main__header__left-content
+          .main__header__left-content__group-name
+            = @group.name
+          .main__header__left-content__group-members
+            Members:
+            - @group.users.each do |user|
+              = user.name
         = link_to "Edit", edit_group_path(@group) , class: "main__header__group-edit--frame-blue"
 
-      %div.main__chat
-        %div.main__chat__message
-          %div.main__chat__message__user-name seo
-          %div.main__chat__message__send-time 2016/09/21 06:16:55
-          %p.main__chat__message__text Hello world!
-        %div.main__chat__message
-          %div.main__chat__message__user-name neko
-          %div.main__chat__message__send-time 2016/09/22 06:16:55
-          %div.main__chat__message__text Good bye world!
+      .main__chat
+        .main__chat__message
+        - @messages.each do |message|
+          .main__chat__message__user-name
+            = message.user.name
+          .main__chat__message__send-time
+            = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+          %p.main__chat__message__text
+            = message.body
 
       %footer.main__footer
-        %div.main__footer__message-form
+        .main__footer__message-form
           = form_for [@group, @message] do |f|
             =f.text_field :body, class: "main__footer__message-form__text", placeholder: "type a message"
             = f.label :image, { class: "fa fa-picture-o" } do

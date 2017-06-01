@@ -1,5 +1,9 @@
 - groups.each do|group|
-  %div.side__groups__group
-    %div.side__groups__group__name
+  .side__groups__group
+    .side__groups__group__name
       = group.name
-    %div.side__groups__group__message まだメッセージはありません。
+    .side__groups__group__message
+      - if group.messages.present?
+        = group.messages.last.body
+      - else
+        まだメッセージはありません
