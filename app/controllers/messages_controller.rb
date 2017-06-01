@@ -9,13 +9,20 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.create(message_params)
-    redirect_to group_messages_path(params[:group_id])
+    @group = Group.find(params[:group_id])
+    @message = @group.messages.new(message_params)
+    if @message.save
+      flash[:notice] = "メッセージを作成しました"
+      redirect_to group_messages_path(params[:group_id])
+    else
+      flash.now[:alert] = "メッセージ作成に失敗しました"
+      render "index"
+    end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:body, :image).merge(group_id: params[:group_id])
+    params.require(:message).permit(:body, :image).merge(user_id: current_user.id)
   end
 end
