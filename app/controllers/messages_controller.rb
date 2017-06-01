@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :find_group, only: [:index, :create]
+  before_action :group_messages, only: [:index, :create]
 
   def index
     @message = Message.new
@@ -23,5 +24,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body, :image).merge(user_id: current_user.id)
+  end
+
+  def group_messages
+    @messages = @group.messages.order("created_at DESC").limit(10).reverse
   end
 end
