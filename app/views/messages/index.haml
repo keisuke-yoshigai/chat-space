@@ -19,19 +19,23 @@
     %div.main
       %header.main__header
         %div.main__header__left-content
-          %div.main__header__left-content__group-name sampleグループ
-          %div.main__header__left-content__group-members Members: seo neko
+          %div.main__header__left-content__group-name
+            = @group.name
+          %div.main__header__left-content__group-members
+            Members:
+            - @group.users.each do |user|
+              = user.name
         = link_to "Edit", edit_group_path(@group) , class: "main__header__group-edit--frame-blue"
 
       %div.main__chat
         %div.main__chat__message
-          %div.main__chat__message__user-name seo
-          %div.main__chat__message__send-time 2016/09/21 06:16:55
-          %p.main__chat__message__text Hello world!
-        %div.main__chat__message
-          %div.main__chat__message__user-name neko
-          %div.main__chat__message__send-time 2016/09/22 06:16:55
-          %div.main__chat__message__text Good bye world!
+        - @messages.each do |message|
+          %div.main__chat__message__user-name
+            = message.user.name
+          %div.main__chat__message__send-time
+            = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+          %p.main__chat__message__text
+            = message.body
 
       %footer.main__footer
         %div.main__footer__message-form
