@@ -7,15 +7,22 @@ describe MessagesController do
   describe 'GET #index' do
     context 'ログインしている場合' do
       login_user
-      it '該当するビューが描画されている' do
+      before :each do
         get :index
+      end
+      it '該当するビューが描画されている' do
         expect(response).to render_template :index
       end
       it '@messageがある' do
-        get :index
         expect(assigns(:message)).to be_a_new(Message)
       end
+      it '@messagesがある' do
+        messages = create_list(:group_messages, 10, group_id: group.id)
+        get :index, group_id: messages[0].group_id
+        expect(assigns(:messages)).to match(messages.reverse)
+      end
     end
+
     context 'ログインしていない場合' do
       it 'ログイン画面にリダイレクトされる' do
         get :index
