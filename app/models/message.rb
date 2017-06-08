@@ -12,3 +12,4 @@ class Message < ApplicationRecord
     body.present? || image.present?
   end
 end
+
