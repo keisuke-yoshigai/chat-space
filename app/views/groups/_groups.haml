@@ -1,9 +1,11 @@
 - groups.each do|group|
   .side__groups__group
     .side__groups__group__name
-      = group.name
+      = link_to group.name, group_messages_path(group)
     .side__groups__group__message
-      - if group.messages.present?
+      - if group.messages.empty?
+        まだメッセージはありません
+      - elsif group.messages.last.body.present?
         = group.messages.last.body
       - else
-        まだメッセージはありません
+        画像が投稿されています
