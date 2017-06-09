@@ -17,7 +17,7 @@ html {
   width: 100%;
 
   body {
-    height: calc(100% - 30px);
+    height: 100%;
     width: 100%;
     .side {
       height: 100%;
@@ -51,10 +51,20 @@ html {
         padding: 0 20px;
         &__group {
           padding: 20px 0;
+          position: relative;
           &__name {
             font-size: 15px;
             color: $white;
             padding-bottom: 5px;
+            a {
+              color: $white;
+              text-decoration: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
           }
           &__message {
             font-size: 11px;
@@ -99,6 +109,8 @@ html {
         }
       }
       &__chat {
+        width: 100%;
+        overflow-y: scroll;
         padding: 46px 40px 0 40px;
         background-color: #AAAAAA;
         border-top: solid;
@@ -126,7 +138,6 @@ html {
         width:  calc(100vw - #{$side-width} - 80px);
         padding: 20px 40px;
         bottom: 0;
-        position: absolute;
 
         &__message-form {
           &__text {
