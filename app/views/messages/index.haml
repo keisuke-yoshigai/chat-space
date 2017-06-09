@@ -16,6 +16,7 @@
       .side__groups
         = render partial: "groups/groups", locals: {groups: current_user.groups}
 
+  - if @group
     .main
       %header.main__header
         .main__header__left-content
@@ -35,7 +36,8 @@
           .main__chat__message__send-time
             = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
           %p.main__chat__message__text
-            = message.body
+            = message.body if message.body
+            = image_tag message.image if message.image
 
       %footer.main__footer
         .main__footer__message-form

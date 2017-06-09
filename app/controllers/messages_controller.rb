@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   private
 
   def find_group
-    @group = Group.find(params[:group_id])
+    @group = Group.find(params[:group_id]) if params[:group_id]
   end
 
   def message_params
@@ -27,6 +27,6 @@ class MessagesController < ApplicationController
   end
 
   def group_messages
-    @messages = @group.messages.order("created_at DESC").limit(10).reverse
+    @messages = @group.messages.order("created_at DESC").reverse if params[:group_id]
   end
 end
