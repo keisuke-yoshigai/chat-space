@@ -6,6 +6,7 @@ module ApplicationHelper
       content_tag(:h1, "チャットグループ編集")
     end
   end
+
   def message_check(group)
     if group.messages.empty?
       "まだメッセージはありません"
