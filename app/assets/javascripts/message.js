@@ -36,6 +36,7 @@ $(function(){
         var html = createHtml(data);
         $(".main__chat").append(html);
         $(".main__footer__message-form__text").val("");
+        $("#message_image").val("");
         resetSendButton();
     })
     .fail(function() {
