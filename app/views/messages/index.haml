@@ -35,13 +35,14 @@
             = message.user.name
           .main__chat__message__send-time
             = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
-          %p.main__chat__message__text
+          .main__chat__message__text
             = message.body if message.body
+          .main__chat__message__image
             = image_tag message.image if message.image
 
       %footer.main__footer
         .main__footer__message-form
-          = form_for [@group, @message] do |f|
+          = form_for [@group, @message], html: { class: "js-form" } do |f|
             =f.text_field :body, class: "main__footer__message-form__text", placeholder: "type a message"
             = f.label :image, { class: "fa fa-picture-o" } do
               = f.file_field :image, style: "display: none"

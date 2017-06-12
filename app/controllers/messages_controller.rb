@@ -8,8 +8,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = @group.messages.new(message_params)
+
     if @message.save
-      redirect_to group_messages_path(params[:group_id]), notice: "メッセージを作成しました"
+      respond_to do |format|
+        format.html {
+         redirect_to group_messages_path(params[:group_id]), notice: "メッセージを作成しました"
+        }
+        format.json {
+          render "index", handlers: "jbuilder"
+        }
+      end
     else
       flash.now[:alert] = "メッセージ作成に失敗しました"
       render "index"
@@ -27,6 +35,6 @@ class MessagesController < ApplicationController
   end
 
   def group_messages
-    @messages = @group.messages.order("created_at DESC").reverse if params[:group_id]
+    @messages = @group.messages.order("created_at ASC") if params[:group_id]
   end
 end
