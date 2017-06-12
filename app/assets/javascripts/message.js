@@ -1,9 +1,8 @@
 $(function(){
   function createHtml(data) {
     var chatMessage = $(".main__chat__message");
-    chatMessage.append("<div class='main__chat__message__user-name'>" + data.user_name + "</div>");
-    chatMessage.append("<div class='main__chat__message__send-time'>" + data.created_at + "</div>");
-    chatMessage.append("<div class='main__chat__message__text'>" + data.body + "</div>");
+    chatMessage.append("<div class='main__chat__message__user-name'>" + data.user_name + "</div>", "<div class='main__chat__message__send-time'>" + data.created_at + "</div>", "<div class='main__chat__message__text'>" + data.body + "</div>");
+
     if (data.image.url) {
         chatMessage.append("<div class='main__chat__message__image'><img src=" + data.image.url + "></div>");
     }
