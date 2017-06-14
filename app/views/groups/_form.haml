@@ -16,11 +16,30 @@
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label "チャットメンバー", class: "chat-group-form__label"
+
     .chat-group-form__field--right
-      = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
-        = b.label{ b.check_box + b.text }
+      .chat-group-user.clearfix.js-chat-member#chat-group-user-8
+      %ul#chat-group-users
+        %li.chat-group-user.clearfix
+          %input{ name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}" }
+          %p.chat-group-user__name
+            = current_user.name
+        - if @users
+          - @users.each do |user|
+            - if user != current_user
+              %li.chat-group-user.clearfix
+                %input{ name: "group[user_ids][]", type: "hidden", value: "#{user.id}" }
+                %p.chat-group-user__name
+                  = user.name
+                %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn
+                  削除
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
+      %label{ class: "chat-group-form__label", for: "user-search-field" }
+        チャットメンバーを追加
     .chat-group-form__field--right
+      .chat-group-form__search.clearfix
+        %input{ class: "chat-group-form__input", id: "user-search-field", placeholder: "追加したいユーザー名を入力してください", type: "text" }
+      #user-search-result
       = f.submit "Save", class: "chat-group-form__action-btn"
