@@ -1,8 +1,9 @@
 $(document).on('load turbolinks:load page:change', function() {
   function createHtml(user) {
     $("#user-search-result").append("<div class='chat-group-user chat-group-user-search clearfix'>");
-    $(".chat-group-user-search").append("<p class='chat-group-user__name'>" + user.name + "</p>");
-    $(".chat-group-user-search").append($("<a class='user-search-add chat-group-user__btn chat-group-user__btn--add' data-user-id=" + user.id + " data-user-name=" + user.name + ">追加</a>"));
+    var targetUserInfo = $(".chat-group-user-search");
+    targetUserInfo.append("<p class='chat-group-user__name'>" + user.name + "</p>");
+    targetUserInfo.append($("<a class='user-search-add chat-group-user__btn chat-group-user__btn--add' data-user-id=" + user.id + " data-user-name=" + user.name + ">追加</a>"));
   }
 
   function addMember(id, name){
@@ -54,7 +55,7 @@ $(document).on('load turbolinks:load page:change', function() {
   });
   $("#user-search-result").on("click", ".user-search-add", function(){
       var id = $(this).attr("data-user-id");
-      name = $(this).attr("data-user-name");
+      var name = $(this).attr("data-user-name");
       addMember(id, name);
       $(this).parent().remove();
   });
