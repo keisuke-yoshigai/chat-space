@@ -2,8 +2,8 @@ $(document).on('load turbolinks:load page:change', function() {
   function createHtml(user) {
     $("#user-search-result").append("<div class='chat-group-user chat-group-user-search clearfix'>");
     var targetUserInfo = $(".chat-group-user-search");
-    targetUserInfo.append("<p class='chat-group-user__name'>" + user.name + "</p>");
-    targetUserInfo.append($("<a class='user-search-add chat-group-user__btn chat-group-user__btn--add' data-user-id=" + user.id + " data-user-name=" + user.name + ">追加</a>"));
+    $(targetUserInfo).append("<p class='chat-group-user__name'>" + user.name + "</p>");
+    $(targetUserInfo).append($("<a class='user-search-add chat-group-user__btn chat-group-user__btn--add' data-user-id=" + user.id + " data-user-name=" + user.name + ">追加</a>"));
   }
 
   function addMember(id, name){
