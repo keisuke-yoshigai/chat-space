@@ -35,6 +35,6 @@ class MessagesController < ApplicationController
   end
 
   def group_messages
-    @messages = @group.messages.order("created_at ASC") if params[:group_id]
+    @messages = @group.messages.includes(:user).order("created_at ASC") if params[:group_id]
   end
 end

@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load page:change', function(){
   function createHtml(data) {
     var chatMessage = $(".main__chat__message");
     chatMessage.append("<div class='main__chat__message__user-name'>" + data.user_name + "</div>", "<div class='main__chat__message__send-time'>" + data.created_at + "</div>", "<div class='main__chat__message__text'>" + data.body + "</div>");

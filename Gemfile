@@ -16,6 +16,7 @@ gem 'devise'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'
