@@ -1,12 +1,16 @@
-$(document).on('turbolinks:load page:change', function(){
+$(document).on('turbolinks:load page:change', function() {
   var scrollTarget = $(".main__chat:last");
 
   function createHtml(data) {
-    var chatMessage = $(".main__chat__message");
-    chatMessage.append("<div class='main__chat__message__user-name'>" + data.user_name + "</div>", "<div class='main__chat__message__send-time'>" + data.created_at + "</div>", "<div class='main__chat__message__text'>" + data.body + "</div>");
+    var user_name = "<div class='main__chat__message__user-name'>" + data.user_name + "</div>";
+    var created_at = "<div class='main__chat__message__send-time'>" + data.created_at + "</div>";
+    var body = "<div class='main__chat__message__text'>" + data.body + "</div>";
+    var image_url = "<div class='main__chat__message__image'><img src=" + data.image.url + "></div>";
+
+    chatMessage = "<div class='main__chat__message'>" + user_name + created_at + body + "</div>";
 
     if (data.image.url) {
-        chatMessage.append("<div class='main__chat__message__image'><img src=" + data.image.url + "></div>");
+      chatMessage = "<div class='main__chat__message'>" + user_name + created_at + body + image_url +  "</div>";
     }
     return chatMessage;
   }
@@ -34,6 +38,7 @@ $(document).on('turbolinks:load page:change', function(){
     .done(function(data) {
         var html = createHtml(data);
         $(".main__chat").append(html);
+        console.log(html);
         $(".main__footer__message-form__text").val("");
         $("#message_image").val("");
         resetSendButton();
@@ -44,22 +49,20 @@ $(document).on('turbolinks:load page:change', function(){
     });
   });
 
-  function automaticUpdate(){
-    $.ajax({
+  function automaticUpdate() {
+    $.ajax( {
       type: "GET",
       url: document.location.href,
       dataType: "json",
     })
-    .done(function(messages){
-      $(".main__chat__message").remove();
-      $.each(messages, function(index, message){
-        createHtml(message);
-
-        scrollTarget.animate( {
-          scrollTop: scrollTarget[0].scrollHeight
-        }, 0);
+    .done(function(messages) {
+      $(".main__chat").empty();
+      $.each(messages, function(index, message) {
+        var html = createHtml(message);
+        $(".main__chat").append(html);
       });
-      console.log("更新されました");
+      scrollTarget.animate( {
+          scrollTop: scrollTarget[0].scrollHeight }, 500);
     })
     .fail(function(){
       alert("更新に失敗しました");
