@@ -1,4 +1,6 @@
 $(document).on('turbolinks:load page:change', function(){
+  var scrollTarget = $(".main__chat:last");
+
   function createHtml(data) {
     var chatMessage = $(".main__chat__message");
     chatMessage.append("<div class='main__chat__message__user-name'>" + data.user_name + "</div>", "<div class='main__chat__message__send-time'>" + data.created_at + "</div>", "<div class='main__chat__message__text'>" + data.body + "</div>");
@@ -18,11 +20,9 @@ $(document).on('turbolinks:load page:change', function(){
     var formData = new FormData(this);
     var url = location.href;
 
-    var scrollTarget = $(".main__chat:last");
     scrollTarget.animate( {
         scrollTop: scrollTarget[0].scrollHeight
     }, 500);
-
     $.ajax( {
       type: "POST",
       url: url,
@@ -43,4 +43,27 @@ $(document).on('turbolinks:load page:change', function(){
         resetSendButton();
     });
   });
+
+  function automaticUpdate(){
+    $.ajax({
+      type: "GET",
+      url: document.location.href,
+      dataType: "json",
+    })
+    .done(function(messages){
+      $(".main__chat__message").remove();
+      $.each(messages, function(index, message){
+        createHtml(message);
+
+        scrollTarget.animate( {
+          scrollTop: scrollTarget[0].scrollHeight
+        }, 0);
+      });
+      console.log("更新されました");
+    })
+    .fail(function(){
+      alert("更新に失敗しました");
+    });
+  };
+  setInterval(automaticUpdate, 5000);
 });
