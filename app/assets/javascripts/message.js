@@ -38,9 +38,7 @@ $(document).on('turbolinks:load page:change', function() {
     .done(function(data) {
         var html = createHtml(data);
         $(".main__chat").append(html);
-        console.log(html);
-        $(".main__footer__message-form__text").val("");
-        $("#message_image").val("");
+        $(".main__footer__message-form__text, #message_image").val("");
         resetSendButton();
     })
     .fail(function() {

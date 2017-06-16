@@ -6,9 +6,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     respond_to do |format|
       format.html
-      format.json {
-        render "messages/index", handlers: "jbuilder"
-      }
+      format.json
     end
   end
 
