@@ -39,7 +39,8 @@ $(document).on('turbolinks:load page:change', function() {
     .done(function(data) {
         var html = createHtml(data);
         $main.append(html);
-        $(".main__footer__message-form__text, #message_image").val("");
+        $(".js-form")[0].reset();
+        debugger;
         resetSendButton();
     })
     .fail(function() {
