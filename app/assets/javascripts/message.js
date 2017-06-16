@@ -40,7 +40,6 @@ $(document).on('turbolinks:load page:change', function() {
         var html = createHtml(data);
         $main.append(html);
         $(".js-form")[0].reset();
-        debugger;
         resetSendButton();
     })
     .fail(function() {
