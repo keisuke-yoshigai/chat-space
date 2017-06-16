@@ -28,16 +28,16 @@
         = link_to "Edit", edit_group_path(@group) , class: "main__header__group-edit--frame-blue"
 
       .main__chat
-        .main__chat__message
         - @messages.each do |message|
-          .main__chat__message__user-name
-            = message.user.name
-          .main__chat__message__send-time
-            = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
-          .main__chat__message__text
-            = message.body if message.body
-          .main__chat__message__image
-            = image_tag message.image if message.image
+          .main__chat__message
+            .main__chat__message__user-name
+              = message.user.name
+            .main__chat__message__send-time
+              = message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+            .main__chat__message__text
+              = message.body if message.body
+            .main__chat__message__image
+              = image_tag message.image if message.image
 
       %footer.main__footer
         .main__footer__message-form

@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
 
   def index
     @message = Message.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
@@ -15,7 +19,7 @@ class MessagesController < ApplicationController
          redirect_to group_messages_path(params[:group_id]), notice: "メッセージを作成しました"
         }
         format.json {
-          render "index", handlers: "jbuilder"
+          render "create", handlers: "jbuilder"
         }
       end
     else

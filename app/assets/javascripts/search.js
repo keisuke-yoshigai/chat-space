@@ -11,7 +11,6 @@ $(document).on('load turbolinks:load page:change', function() {
     var nameTag = "<p class=chat-group-user__name>" + name + "</p>";
     var aTag = "<a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>";
 
-
     $("#chat-group-users").append("<li class='chat-group-user chat-group-user-list clearfix'>" + inputTag + nameTag + aTag + "</li>");
   }
 
