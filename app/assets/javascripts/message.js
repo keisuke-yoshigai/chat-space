@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load page:change', function() {
-  var scrollTarget = $(".main__chat:last");
+  var $scrollTarget = $(".main__chat:last");
+  var $main = $(".main__chat");
 
   function createHtml(data) {
     var user_name = "<div class='main__chat__message__user-name'>" + data.user_name + "</div>";
@@ -24,8 +25,8 @@ $(document).on('turbolinks:load page:change', function() {
     var formData = new FormData(this);
     var url = location.href;
 
-    scrollTarget.animate( {
-        scrollTop: scrollTarget[0].scrollHeight
+    $scrollTarget.animate( {
+        scrollTop: $scrollTarget[0].scrollHeight
     }, 500);
     $.ajax( {
       type: "POST",
@@ -37,7 +38,7 @@ $(document).on('turbolinks:load page:change', function() {
     })
     .done(function(data) {
         var html = createHtml(data);
-        $(".main__chat").append(html);
+        $main.append(html);
         $(".main__footer__message-form__text, #message_image").val("");
         resetSendButton();
     })
@@ -54,13 +55,13 @@ $(document).on('turbolinks:load page:change', function() {
       dataType: "json",
     })
     .done(function(messages) {
-      $(".main__chat").empty();
+      $main.empty();
       $.each(messages, function(index, message) {
         var html = createHtml(message);
-        $(".main__chat").append(html);
+        $main.append(html);
       });
-      scrollTarget.animate( {
-          scrollTop: scrollTarget[0].scrollHeight }, 500);
+      $scrollTarget.animate( {
+          scrollTop: $scrollTarget[0].scrollHeight }, 500);
     })
     .fail(function(){
       alert("更新に失敗しました");
