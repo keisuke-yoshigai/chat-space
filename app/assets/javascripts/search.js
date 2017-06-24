@@ -35,7 +35,7 @@ $(document).on('load turbolinks:load page:change', function() {
         $.ajax( {
           type: "GET",
           url: "/users",
-          data: ( "keyword=" + input),
+          data: ("keyword=" + input),
           dataType: "json",
           processData: false,
           contentType: false

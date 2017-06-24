@@ -64,7 +64,7 @@ $(document).on('turbolinks:load page:change', function() {
           scrollTop: $scrollTarget[0].scrollHeight }, 500);
     })
     .fail(function(){
-      alert("更新に失敗しました");
+      console.log("更新に失敗しました");
     });
   };
   setInterval(automaticUpdate, 5000);
