@@ -43,6 +43,6 @@
         .main__footer__message-form
           = form_for [@group, @message], html: { class: "js-form" } do |f|
             =f.text_field :body, class: "main__footer__message-form__text", placeholder: "type a message"
-            = f.label :image, { class: "fa fa-picture-o" } do
-              = f.file_field :image, style: "display: none"
+            = f.label :image, { class: "fa fa-picture-o", for: "file_field" } do
+              = f.file_field :image, style: "display: none;", id: "file_field"
             =f.submit "Send", class: "main__footer__message-form__submit--back-blue"
